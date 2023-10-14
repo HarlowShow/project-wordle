@@ -37,7 +37,7 @@ function Game() {
   return (
     <>
     <Grid guesses = {guesses}/>
-    <Guess handleGuess = {handleGuess}/>;
+    <Guess handleGuess = {handleGuess}/>
     </>
   )
 }
