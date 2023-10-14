@@ -12,10 +12,12 @@ function Guess({handleGuess}) {
       <input
         id="guess-input"
         type="text"
-        value={guess}
+        value={guess.toUpperCase()}
         onChange = {(event) => {
           setGuess(event.target.value)
         }}
+        pattern="[a-zA-Z]{5}"
+        title="enter a five letter world"
       ></input>
     </form>
   </div>;
