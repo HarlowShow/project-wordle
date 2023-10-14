@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 
 import { sample } from '../../utils';
+
 import { WORDS } from '../../data';
 import Guess from '../Guess';
 import Grid from '../Grid'
+import { checkGuess } from '/src/game-helpers';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -24,9 +26,13 @@ function Game() {
   const handleGuess = (g) => {
     if (g.length === 5 && typeof g === 'string') {
       const nextGuess = g.toUpperCase()
+      const guessResults = checkGuess(g, answer)
+      const styles = []
+      guessResults.forEach((result) => styles.push(result.status))
       const guessObj = {
         guess: nextGuess,
         id: crypto.randomUUID(),
+        styles,
       }
       setGuess(nextGuess)
       setGuesses([...guesses, guessObj])
@@ -36,7 +42,7 @@ function Game() {
   }
   return (
     <>
-    <Grid guesses = {guesses}/>
+    <Grid guesses = {guesses} answer= {answer}/>
     <Guess handleGuess = {handleGuess}/>
     </>
   )
