@@ -4,7 +4,8 @@ import { sample } from '../../utils';
 
 import { WORDS } from '../../data';
 import Guess from '../Guess';
-import Grid from '../Grid'
+import Grid from '../Grid';
+import Results from '../Results';
 import { checkGuess } from '/src/game-helpers';
 
 // Pick a random word on every pageload.
@@ -15,6 +16,7 @@ console.info({ answer });
 function Game() {
   const [guess, setGuess] = React.useState('')
   const [guesses, setGuesses] = React.useState([])
+  const [hasWon, setHasWon] = React.useState(false)
 
   const logGuess = () => {
     console.log('answer: ' + answer)
@@ -36,6 +38,10 @@ function Game() {
       }
       setGuess(nextGuess)
       setGuesses([...guesses, guessObj])
+      if (nextGuess === answer) {
+        setHasWon(true)
+        console.log('correct guess entered')
+      }
     } else {
       console.log('wrong length of guess')
     }
@@ -43,7 +49,8 @@ function Game() {
   return (
     <>
     <Grid guesses = {guesses} answer= {answer}/>
-    <Guess handleGuess = {handleGuess}/>
+    <Guess handleGuess = {handleGuess} hasWon={hasWon}/>
+    <Results length={guesses.length} hasWon={hasWon} answer={answer}/>
     </>
   )
 }

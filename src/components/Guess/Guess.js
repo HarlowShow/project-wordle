@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Guess({handleGuess}) {
+function Guess({handleGuess, hasWon}) {
   const [guess, setGuess] = React.useState('')
 
   return <div>
@@ -10,6 +10,7 @@ function Guess({handleGuess}) {
     }}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        disabled={hasWon}
         id="guess-input"
         type="text"
         value={guess.toUpperCase()}
