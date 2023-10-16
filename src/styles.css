@@ -30,6 +30,48 @@ body {
   }
 }
 
+.keyboard-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: space-between;
+  /* align-content: stretch; */
+  gap: 2px;
+}
+
+.second {
+  width: 95%;
+}
+
+.third {
+  width: 85%;
+}
+
+.key {
+  border-radius: 5px;
+  width: 50px;
+  background-color: #fcfcfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.misplaced {
+  background-color: yellow;
+}
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: grey;
+}
 button {
   margin: 0;
   padding: 0;
